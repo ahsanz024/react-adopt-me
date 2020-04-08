@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import SearchParams from "./SearchParams";
+import Result from "./Results";
 
 const App = () => {
   return (
