@@ -52,8 +52,10 @@ const SearchParams = () => {
             onChange={(event) => setLocation(event.target.value)}
           />
         </label>
+
         <AnimalDropDown />
         <BreedDropDown />
+
         <button>Submit</button>
       </form>
       <Result pets={pets} />
