@@ -2,12 +2,7 @@ import React from "react";
 import pet from "@frontendmasters/pet";
 
 class Details extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-    };
-  }
+  state = { loading: true };
   componentDidMount() {
     // We need the ID of the animal coming from the route `/details/:id`
     // Anything being passed by the parent is available in `this.props` (immutable)
