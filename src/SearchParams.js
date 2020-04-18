@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 import Result from "./Result";
+import ThemeContext from "./ThemeContext";
 
 const SearchParams = () => {
   // useState is a hook
@@ -11,6 +12,8 @@ const SearchParams = () => {
   const [animal, AnimalDropDown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropDown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
+
+  const [theme, setTheme] = useContext(ThemeContext);
 
   // Render happens before anything in the useEffect is executed
   // Needs a list of dependencies (e.g. when should it run)
@@ -56,7 +59,21 @@ const SearchParams = () => {
         <AnimalDropDown />
         <BreedDropDown />
 
-        <button>Submit</button>
+        <label htmlFor="theme">
+          Theme
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            onBlur={(e) => setTheme(e.target.value)}
+          >
+            <option value="peru">Peru</option>
+            <option value="darkblue">Dark Blue</option>
+            <option value="purple">Purple</option>
+          </select>
+        </label>
+
+        {/* Use themed buttons */}
+        <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
       <Result pets={pets} />
     </div>
